@@ -1,0 +1,2 @@
+fsm_change.c:17:6:trafficLight_change	8	static
+fsm_change.c:168:6:triggerLed	8	static

@@ -1,0 +1,9 @@
+software_timer.c:9:6:setTimerTraffic1	16	static
+software_timer.c:13:6:setTimerTraffic2	16	static
+software_timer.c:18:6:setTimerWait	16	static
+software_timer.c:23:6:setTimerModify	16	static
+software_timer.c:28:6:setTimerTriggerLed	16	static
+software_timer.c:33:6:setTimerCounter1	16	static
+software_timer.c:38:6:setTimerCounter2	16	static
+software_timer.c:43:6:setTimerScanFreq	16	static
+software_timer.c:48:6:timer_run	4	static

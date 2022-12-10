@@ -1,0 +1,5 @@
+button.c:22:6:readKeyInput	16	static
+button.c:62:5:isPressedAndReleased	16	static
+button.c:70:5:isLongPressedAndReleased	16	static
+button.c:78:15:is_button_pressed	16	static
+button.c:82:15:is_button_pressed_3s	16	static
