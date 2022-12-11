@@ -24,3 +24,6 @@ FUNCTION TO PUT INSIDE WHILE LOOP IN MAIN.C
 - trafficLight_manual()
 - trafficLight_pedestrian()
 - triggerLed()
+
+
+Adding new feature sound 
