@@ -32,6 +32,8 @@
 
 #define TIME_FOR_PEDESTRIAN				5000
 
+#define PEDESTRIAN_LIGHT_CYCLE			8
+
 enum TRAFFIC_STATE	{IDLE,
 					AUTO_RED1_GREEN2, AUTO_RED1_YELLOW2, AUTO_GREEN1_RED2, AUTO_YELLOW1_RED2,
 					CHANGE_MODE_RED, CHANGE_MODE_YELLOW, CHANGE_MODE_GREEN,
@@ -43,6 +45,7 @@ extern enum TRAFFIC_STATE state;
 extern int counter_red;
 extern int counter_yellow;
 extern int counter_green;
+extern int counter_pedestrian;
 
 
 extern int isRedMode;
