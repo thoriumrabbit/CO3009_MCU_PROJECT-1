@@ -24,9 +24,11 @@ void trafficLight_automatic(){
 		segment2Counter	= counter_green / DIVISION_NUMBER;
 		setTimerTraffic1(counter_green);
 		setTimerCounter1(DURATION_1S);
+		counter_pedestrian = 0;
 		break;
 	case AUTO_RED1_GREEN2:
 		displayTrafficLight(RED_LIGHT, GREEN_LIGHT);
+		if(isPedestrian == 1) displayPedestrianLight(PEDESTRIAN_LIGHT_GO);
 		if(isInManual == 1){
 			state = MANUAL_RED1_GREEN2;
 		}
@@ -52,11 +54,18 @@ void trafficLight_automatic(){
 				segment2Counter = counter_yellow / DIVISION_NUMBER;
 				state = AUTO_RED1_YELLOW2;
 			}
+			if(isPedestrian == 1) {
+				counter_pedestrian++;
+				if(counter_pedestrian == PEDESTRIAN_LIGHT_CYCLE) {
+					isPedestrian = 0;
+				}
+			}
 			setTimerCounter1(DURATION_1S);
 		}
 		break;
 	case AUTO_RED1_YELLOW2:
 		displayTrafficLight(RED_LIGHT, YELLOW_LIGHT);
+		if(isPedestrian == 1) displayPedestrianLight(PEDESTRIAN_LIGHT_GO);
 		if(isPressedAndReleased(BTN_SELECT_INDEX)){
 			isInManual = 1;
 			isInAuto = 0;
@@ -78,8 +87,11 @@ void trafficLight_automatic(){
 				segment1Counter = counter_green / DIVISION_NUMBER;
 				segment2Counter = counter_red / DIVISION_NUMBER;
 				state = AUTO_GREEN1_RED2;
-				if(isPedestrian == 1){
-					state = PEDESTRIAN_GO;
+			}
+			if(isPedestrian == 1) {
+				counter_pedestrian++;
+				if(counter_pedestrian == PEDESTRIAN_LIGHT_CYCLE) {
+					isPedestrian = 0;
 				}
 			}
 			setTimerCounter1(DURATION_1S);
@@ -87,6 +99,7 @@ void trafficLight_automatic(){
 		break;
 	case AUTO_GREEN1_RED2:
 		displayTrafficLight(GREEN_LIGHT, RED_LIGHT);
+		if(isPedestrian == 1) displayPedestrianLight(PEDESTRIAN_LIGHT_STOP);
 		if(isInManual == 1){
 			state = MANUAL_GREEN1_RED2;
 		}
@@ -102,6 +115,9 @@ void trafficLight_automatic(){
 			clearTrafficDisplay();
 			tempCounter = counter_red/DIVISION_NUMBER;
 		}
+		if(isPressedAndReleased(BTN_PED_INDEX)){
+			isPedestrian = 1;
+		}
 		if(countDownTimer1_counter == 1){
 			segment1Counter --;
 			segment2Counter --;
@@ -109,11 +125,18 @@ void trafficLight_automatic(){
 				segment1Counter = counter_yellow / DIVISION_NUMBER;
 				state = AUTO_YELLOW1_RED2;
 			}
+			if(isPedestrian == 1) {
+				counter_pedestrian++;
+				if(counter_pedestrian == PEDESTRIAN_LIGHT_CYCLE) {
+					isPedestrian = 0;
+				}
+			}
 			setTimerCounter1(DURATION_1S);
 		}
 		break;
 	case AUTO_YELLOW1_RED2:
 		displayTrafficLight(YELLOW_LIGHT, RED_LIGHT);
+		if(isPedestrian == 1) displayPedestrianLight(PEDESTRIAN_LIGHT_STOP);
 		if(isPressedAndReleased(BTN_SELECT_INDEX)){
 			isInManual = 1;
 			isInAuto = 0;
@@ -125,6 +148,9 @@ void trafficLight_automatic(){
 			clearTrafficDisplay();
 			tempCounter = counter_red/DIVISION_NUMBER;
 		}
+		if(isPressedAndReleased(BTN_PED_INDEX)){
+			isPedestrian = 1;
+		}
 		if(countDownTimer1_counter == 1){
 			segment1Counter --;
 			segment2Counter --;
@@ -132,6 +158,12 @@ void trafficLight_automatic(){
 				segment1Counter = counter_red / DIVISION_NUMBER;
 				segment2Counter = counter_green / DIVISION_NUMBER;
 				state = AUTO_RED1_GREEN2;
+			}
+			if(isPedestrian == 1) {
+				counter_pedestrian++;
+				if(counter_pedestrian == PEDESTRIAN_LIGHT_CYCLE) {
+					isPedestrian = 0;
+				}
 			}
 			setTimerCounter1(DURATION_1S);
 		}

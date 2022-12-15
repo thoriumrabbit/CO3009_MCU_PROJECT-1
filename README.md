@@ -14,9 +14,11 @@ CÁC MODE: AUTO, MANUAL, CHANGE_VALUE, PEDESTRIAN
 		* Trong thời gian đợi có thể nhấn SELECT để tiếp tục chỉnh thời gian
 
 - Nhấn PEDESTRIAN -> Mode Pedestrian 
-	Có 2 khả năng sảy ra: -> Chưa rõ lắm
-		Đèn đỏ ở 4 hướng đều được bật để người đi bộ đi qua
-		Đèn đỏ đối diện nhau bật thôi. (UNCLEAR) 
+	+ Đèn giao thông ở 4 nhánh vẫn hoạt động bình thường, không có thay đổi
+	+ Nhấn PEDESTRIAN ở nhánh nào thì đèn PEDESTRIAN ở nhánh đó sẽ:
+		* Bật đỏ nếu như đèn giao thông đang xanh và vàng
+		* Bật xanh nếu như đèn giao thông đang đỏ
+	+ Thời gian sáng: 1 chu kỳ đèn
 
 FUNCTION TO PUT INSIDE WHILE LOOP IN MAIN.C
 - trafficLight_automatic()
