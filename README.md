@@ -30,10 +30,10 @@ FUNCTION TO PUT INSIDE WHILE LOOP IN MAIN.C
 
 Adding new feature sound 
 
-add usart2, baud rate 9600
-add TIM3_CH1, PA6
+- add usart2, baud rate 9600
+- add TIM3_CH1, PA6
 
-change HCLK to 64MHz, ABP1 CLOCK = 32HMz
-TIM2 change to PSC = 7999, ARR = 9 => 100Hz Clock
-TIM3 change to PSC = 63, ARR = 999 => 1kHz Clock
+- change HCLK to 64MHz, ABP1 CLOCK = 32HMz
+- TIM2 change to PSC = 7999, ARR = 9, div 4 => 100Hz Clock
+- TIM3 change to PSC = 63, ARR = 999, div 1 => 500Hz Clock
 
