@@ -22,6 +22,7 @@
 #define GREEN_LIGHT						3
 #define PEDESTRIAN_LIGHT_GO				4
 #define PEDESTRIAN_LIGHT_STOP			5
+#define PEDESTRIAN_LIGHT_OFF			6
 
 #define MAX_SEGMENT_VALUE				99
 #define DURATION_FOR_4HZ				250

@@ -142,6 +142,10 @@
 
 #define Max_Notes 50
 
+extern int dio[72];
+void buzzer_sound(TIM_HandleTypeDef htim ,int volume);
+void buzzer_init(TIM_TypeDef *tim);
+
 typedef struct{
 	uint16_t notes[Max_Notes];
 	/*	8	4	2	1	1/2		1/4		1/8		1/16	1/32	1/64	1/128	1/256	*/

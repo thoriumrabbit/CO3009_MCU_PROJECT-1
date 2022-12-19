@@ -26,6 +26,7 @@
 #include "global.h"
 #include "fsm_automatic.h"
 #include "button.h"
+#include "melody.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -100,6 +101,7 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
+  buzzer_init(TIM3);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -109,8 +111,11 @@ int main(void)
   while (1)
   {
 	  trafficLight_automatic();
+	  buzzer_sound(htim3, 10);
 	  //HAL_GPIO_TogglePin(D2_RED_LED1_GPIO_Port, D2_RED_LED1_Pin);
 	  //HAL_Delay(1000);
+	  //HAL_GPIO_WritePin(D6_PED_LIGHT1_GPIO_Port, D6_PED_LIGHT1_Pin, 1);
+	  //HAL_GPIO_WritePin(D7_PEDLIGHT2_GPIO_Port, D7_PEDLIGHT2_Pin, 0);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
