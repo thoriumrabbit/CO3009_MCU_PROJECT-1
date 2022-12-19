@@ -36,6 +36,7 @@ void trafficLight_manual(){
 			state = MANUAL_GREEN1_RED2;
 		}
 		else if (trafficTimer1_flag == 1 && isInAuto == 1){
+			isInManual = 0;
 			segment1Counter = counter_green / DIVISION_NUMBER;
 			segment2Counter = counter_red / DIVISION_NUMBER;
 			state = AUTO_GREEN1_RED2;
@@ -60,6 +61,7 @@ void trafficLight_manual(){
 			state = MANUAL_RED1_GREEN2;
 		}
 		else if (trafficTimer1_flag == 1 && isInAuto == 1){
+			isInManual = 0;
 			segment1Counter = counter_red / DIVISION_NUMBER;
 			segment2Counter = counter_green / DIVISION_NUMBER;
 			state = AUTO_RED1_GREEN2;
