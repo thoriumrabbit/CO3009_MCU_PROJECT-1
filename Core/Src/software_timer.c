@@ -15,6 +15,7 @@ int timerLed_flag;
 int countDownTimer1_flag;
 int countDownTimer2_flag;
 int scanFreqTimer_flag;
+int buzzerTimer_flag;
 
 int timerLed_counter;
 int trafficTimer1_counter;
@@ -24,6 +25,7 @@ int modifyTimer_counter;
 int countDownTimer1_counter;
 int countDownTimer2_counter;
 int scanFreqTimer_counter;
+int buzzerTimer_counter;
 
 void setTimerTraffic1(int duration){
 	trafficTimer1_counter = duration/TIMER_CYCLE;
@@ -64,6 +66,11 @@ void setTimerScanFreq(int duration){
 	scanFreqTimer_flag = 0;
 }
 
+void setTimerBuzzer(int duration){
+	buzzerTimer_counter = duration/TIMER_CYCLE;
+	buzzerTimer_flag = 0;
+}
+
 void timer_run(){
 	if(trafficTimer1_counter >= 0){
 		trafficTimer1_counter --;
@@ -97,4 +104,8 @@ void timer_run(){
 		scanFreqTimer_counter --;
 		if(scanFreqTimer_counter == 0) scanFreqTimer_flag = 1;
 	}
+	if(buzzerTimer_counter >= 0){
+		buzzerTimer_counter --;
+			if(buzzerTimer_counter == 0) buzzerTimer_flag = 1;
+		}
 }

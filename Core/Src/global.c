@@ -14,6 +14,7 @@ int counter_yellow = DEFAULT_YELLOW_DURATION;
 int counter_green = DEFAULT_GREEN_DURATION;
 int counter_pedestrian;
 
+int buzzer_warning = 0;
 
 int isRedMode;
 int isYellowMode;

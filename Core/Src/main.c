@@ -25,6 +25,8 @@
 #include "software_timer.h"
 #include "global.h"
 #include "fsm_automatic.h"
+#include "fsm_manual.h"
+#include "fsm_change.h"
 #include "button.h"
 #include "melody.h"
 /* USER CODE END Includes */
@@ -101,6 +103,7 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
+  HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   buzzer_init(TIM3);
   /* USER CODE END 2 */
 
@@ -111,7 +114,9 @@ int main(void)
   while (1)
   {
 	  trafficLight_automatic();
-	  buzzer_sound(htim3, 10);
+	  trafficLight_manual();
+	  trafficLight_change();
+
 	  //HAL_GPIO_TogglePin(D2_RED_LED1_GPIO_Port, D2_RED_LED1_Pin);
 	  //HAL_Delay(1000);
 	  //HAL_GPIO_WritePin(D6_PED_LIGHT1_GPIO_Port, D6_PED_LIGHT1_Pin, 1);
@@ -228,7 +233,7 @@ static void MX_TIM3_Init(void)
   htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim3.Init.Period = 999;
   htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_PWM_Init(&htim3) != HAL_OK)
   {
     Error_Handler();
@@ -336,6 +341,7 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
+	buzzer_run();
 	readKeyInput();
 	timer_run();
 }

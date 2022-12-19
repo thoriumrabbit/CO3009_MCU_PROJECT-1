@@ -18,6 +18,7 @@ extern int timerLed_flag;
 extern int countDownTimer1_flag;
 extern int countDownTimer2_flag;
 extern int scanFreqTimer_flag;
+extern int buzzerTimer_flag;
 
 extern int timerLed_counter;
 extern int trafficTimer1_counter;
@@ -27,16 +28,19 @@ extern int modifyTimer_counter;
 extern int countDownTimer1_counter;
 extern int countDownTimer2_counter;
 extern int scanFreqTimer_counter;
+extern int buzzerTimer_counter;
 
 void setTimerTraffic1(int duration);
 void setTimerTraffic2(int duration);
 void setTimerWait(int duration);
 void setTimerModify(int duration);
 void setTimerTriggerLed(int duration);
+void setTimerBuzzer(int duration);
 
 void setTimerCounter1(int duration);
 void setTimerCounter2(int duration);
 void setTimerScanFreq(int duration);
+
 
 void timer_run();
 

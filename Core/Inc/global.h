@@ -49,6 +49,8 @@ extern int counter_green;
 extern int counter_pedestrian;
 
 
+extern int buzzer_warning;
+
 extern int isRedMode;
 extern int isYellowMode;
 extern int isGreenMode;

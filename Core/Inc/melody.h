@@ -145,6 +145,7 @@
 extern int dio[72];
 void buzzer_sound(TIM_HandleTypeDef htim ,int volume);
 void buzzer_init(TIM_TypeDef *tim);
+void buzzer_run(void);
 
 typedef struct{
 	uint16_t notes[Max_Notes];
