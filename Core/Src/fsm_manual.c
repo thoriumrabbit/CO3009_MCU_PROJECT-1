@@ -57,7 +57,7 @@ void trafficLight_manual(){
 	case MANUAL_YELLOW1_RED2:
 		displayTrafficLight(YELLOW_LIGHT, RED_LIGHT);
 		if(trafficTimer1_flag == 1){
-			state = MANUAL_GREEN1_RED2;
+			state = MANUAL_RED1_GREEN2;
 		}
 		else if (trafficTimer1_flag == 1 && isInAuto == 1){
 			segment1Counter = counter_red / DIVISION_NUMBER;
