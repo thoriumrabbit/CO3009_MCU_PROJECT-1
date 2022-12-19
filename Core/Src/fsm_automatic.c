@@ -40,16 +40,16 @@ void trafficLight_automatic() {
 			isInManual = 1;
 			isInAuto = 0;
 		}
-		if (isLongPressedAndReleased(BTN_SELECT_INDEX)) {
-			state = CHANGE_MODE_RED;
+		if (is_button_pressed_3s(BTN_SELECT_INDEX)){
+			clearTrafficDisplay();
+			state = CHANGE_MODE;
 			isInChange = 1;
 			setTimerTriggerLed(DURATION_FOR_4HZ);
-			clearTrafficDisplay();
-			tempCounter = counter_red / DIVISION_NUMBER;
 		}
 		if (isPressedAndReleased(BTN_PED_INDEX)) {
 			isPedestrian = 1;
 		}
+
 
 		if (countDownTimer1_counter == 1) {
 			segment1Counter--;
@@ -85,12 +85,12 @@ void trafficLight_automatic() {
 		if (isPressedAndReleased(BTN_PED_INDEX)) {
 			isPedestrian = 1;
 		}
-		if (isLongPressedAndReleased(BTN_SELECT_INDEX)) {
-			state = CHANGE_MODE_RED;
+
+		if (is_button_pressed_3s(BTN_SELECT_INDEX)){
+			clearTrafficDisplay();
+			state = CHANGE_MODE;
 			isInChange = 1;
 			setTimerTriggerLed(DURATION_FOR_4HZ);
-			clearTrafficDisplay();
-			tempCounter = counter_red / DIVISION_NUMBER;
 		}
 		if (countDownTimer1_counter == 1) {
 			segment1Counter--;
@@ -126,13 +126,13 @@ void trafficLight_automatic() {
 			isInManual = 1;
 			isInAuto = 0;
 		}
-		if (isLongPressedAndReleased(BTN_SELECT_INDEX)) {
-			state = CHANGE_MODE_RED;
+		if (is_button_pressed_3s(BTN_SELECT_INDEX)){
+			clearTrafficDisplay();
+			state = CHANGE_MODE;
 			isInChange = 1;
 			setTimerTriggerLed(DURATION_FOR_4HZ);
-			clearTrafficDisplay();
-			tempCounter = counter_red / DIVISION_NUMBER;
 		}
+
 		if (isPressedAndReleased(BTN_PED_INDEX)) {
 			isPedestrian = 1;
 		}
@@ -165,13 +165,13 @@ void trafficLight_automatic() {
 			isInManual = 1;
 			isInAuto = 0;
 		}
-		if (isLongPressedAndReleased(BTN_SELECT_INDEX)) {
-			state = CHANGE_MODE_RED;
+		if (is_button_pressed_3s(BTN_SELECT_INDEX)){
+			clearTrafficDisplay();
+			state = CHANGE_MODE;
 			isInChange = 1;
 			setTimerTriggerLed(DURATION_FOR_4HZ);
-			clearTrafficDisplay();
-			tempCounter = counter_red / DIVISION_NUMBER;
 		}
+
 		if (isPressedAndReleased(BTN_PED_INDEX)) {
 			isPedestrian = 1;
 		}
