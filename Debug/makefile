@@ -61,8 +61,8 @@ all: main-build
 main-build: CO3009_MCU_PROJECT.elf secondary-outputs
 
 # Tool invocations
-CO3009_MCU_PROJECT.elf: $(OBJS) $(USER_OBJS) C:\Users\pmt12\STM32CubeIDE\workspace_1.7.0\CO3009_MCU_PROJECT\STM32F103RBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "CO3009_MCU_PROJECT.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\pmt12\STM32CubeIDE\workspace_1.7.0\CO3009_MCU_PROJECT\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CO3009_MCU_PROJECT.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+CO3009_MCU_PROJECT.elf: $(OBJS) $(USER_OBJS) D:\VXLVDK\CO3009_MCU_PROJECT\STM32F103RBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "CO3009_MCU_PROJECT.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\VXLVDK\CO3009_MCU_PROJECT\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CO3009_MCU_PROJECT.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

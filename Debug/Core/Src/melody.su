@@ -1,0 +1,2 @@
+melody.c:16:6:buzzer_init	16	static
+melody.c:47:6:buzzer_sound	8	static

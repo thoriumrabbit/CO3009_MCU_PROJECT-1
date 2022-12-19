@@ -13,7 +13,7 @@ uint8_t idx = 0;
 uint16_t beep[3] = {1,1,1};
 uint32_t scale = 0;
 
-int buzzer_init(TIM_TypeDef *tim){
+void buzzer_init(TIM_TypeDef *tim){
 	scale = tim->PSC;
 }
 int butterfly[72] = {
