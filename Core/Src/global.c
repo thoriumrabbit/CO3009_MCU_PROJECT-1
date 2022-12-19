@@ -9,9 +9,9 @@
 #include "global.h"
 enum TRAFFIC_STATE state;
 
-int counter_red;
-int counter_yellow;
-int counter_green;
+int counter_red = DEFAULT_RED_DURATION;
+int counter_yellow = DEFAULT_YELLOW_DURATION;
+int counter_green = DEFAULT_GREEN_DURATION;
 int counter_pedestrian;
 
 
@@ -22,6 +22,7 @@ int isInManual;
 int isInChange;
 int isInAuto;
 int isPedestrian;
+int isPedestrianPressed;
 
 int wasInModify;
 int timeCounter;

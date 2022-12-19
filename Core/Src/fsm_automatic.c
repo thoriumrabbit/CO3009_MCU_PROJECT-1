@@ -57,6 +57,7 @@ void trafficLight_automatic(){
 			if(isPedestrian == 1) {
 				counter_pedestrian++;
 				if(counter_pedestrian == PEDESTRIAN_LIGHT_CYCLE) {
+					counter_pedestrian = 0;
 					isPedestrian = 0;
 				}
 			}
@@ -91,6 +92,7 @@ void trafficLight_automatic(){
 			if(isPedestrian == 1) {
 				counter_pedestrian++;
 				if(counter_pedestrian == PEDESTRIAN_LIGHT_CYCLE) {
+					counter_pedestrian = 0;
 					isPedestrian = 0;
 				}
 			}
@@ -128,6 +130,7 @@ void trafficLight_automatic(){
 			if(isPedestrian == 1) {
 				counter_pedestrian++;
 				if(counter_pedestrian == PEDESTRIAN_LIGHT_CYCLE) {
+					counter_pedestrian = 0;
 					isPedestrian = 0;
 				}
 			}
@@ -162,6 +165,7 @@ void trafficLight_automatic(){
 			if(isPedestrian == 1) {
 				counter_pedestrian++;
 				if(counter_pedestrian == PEDESTRIAN_LIGHT_CYCLE) {
+					counter_pedestrian = 0;
 					isPedestrian = 0;
 				}
 			}

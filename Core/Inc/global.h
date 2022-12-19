@@ -55,6 +55,7 @@ extern int isInManual;
 extern int isInChange;
 extern int isInAuto;
 extern int isPedestrian;
+extern int isPedestrianPressed;
 
 extern int wasInModify;
 extern int timeCounter;
