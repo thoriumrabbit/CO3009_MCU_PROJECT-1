@@ -16,6 +16,15 @@
 
 void trafficLight_change(){
 	switch(state){
+	case CHANGE_MODE:
+		isRedMode = 1;
+		isYellowMode = 0;
+		isGreenMode = 0;
+		if (isLongPressedAndReleased(BTN_SELECT_INDEX)) {
+			state = CHANGE_MODE_RED;
+			tempCounter = counter_red / DIVISION_NUMBER;
+		}
+		break;
 	case CHANGE_MODE_RED:
 		isRedMode = 1;
 		isYellowMode = 0;
@@ -149,6 +158,7 @@ void trafficLight_change(){
 		isInChange = 0;
 		scanFreqTimer_flag = 0;
 		tempCounter = 0;
+		clearTrafficDisplay();
 		if(isPressedAndReleased(BTN_SELECT_INDEX)){
 			isInChange = 1;
 			setTimerTriggerLed(DURATION_FOR_4HZ);
