@@ -23,7 +23,6 @@ void trafficLight_automatic() {
 		clearTrafficDisplay();
 		segment1Counter = counter_red / DIVISION_NUMBER;
 		segment2Counter = counter_green / DIVISION_NUMBER;
-		setTimerTraffic1(counter_green);
 		setTimerCounter1(DURATION_1S);
 		counter_pedestrian = 0;
 		break;
@@ -52,8 +51,6 @@ void trafficLight_automatic() {
 			isPedestrian = 1;
 		}
 
-
-
 		if (countDownTimer1_counter == 1) {
 			segment1Counter--;
 			segment2Counter--;
@@ -70,7 +67,6 @@ void trafficLight_automatic() {
 						isPedestrian = 0;
 					}
 				}
-
 			}
 
 			setTimerCounter1(DURATION_1S);
@@ -111,7 +107,6 @@ void trafficLight_automatic() {
 						isPedestrian = 0;
 					}
 				}
-
 			}
 
 			setTimerCounter1(DURATION_1S);
@@ -155,7 +150,6 @@ void trafficLight_automatic() {
 						isPedestrian = 0;
 					}
 				}
-
 			}
 
 			setTimerCounter1(DURATION_1S);
