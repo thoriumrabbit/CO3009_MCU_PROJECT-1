@@ -1,13 +1,13 @@
 CÁC MODE: AUTO, MANUAL, CHANGE_VALUE, PEDESTRIAN
 
-- Nhấn và thả SELECT_INDEX -> Mode Manual (Đợi hết đèn vàng mới được qua Manual)
-	+ Nhấn MODIFY -> Đèn vàng -> Đổi sang đèn còn lại 
+- Nhấn và thả SELECT (A1 -PA1) -> Mode Manual (Đợi hết đèn vàng mới được qua Manual)
+	+ Nhấn MODIFY (A2 - PA4) -> Đèn vàng -> Đổi sang đèn còn lại 
 		VD: Đang ở Xanh -> Modify -> Vàng -> Đỏ
-	+ Nhấn SET -> Đợi đèn vàng -> AUTO
+	+ Nhấn SET (A3 - PB0) -> Đợi đèn vàng -> AUTO
 	
 - Nhấn giữ 3 giây SELECT -> MODE MODIFY TIME
-	+ Nhấn SELECT_INDEX -> Đổi đèn
-	+ Nhấn MODIFY_INDEX -> +1 value của đèn đó
+	+ Nhấn SELECT -> Đổi đèn
+	+ Nhấn MODIFY -> +1 value của đèn đó
 	+ LONG_PRESSED_MODIFY + 10 value của đèn đó
 	+ Nhấn SET_INDEX thì mới áp dụng giá trị mới của đèn
 		* Sau khi nhấn SET thì đợi ... giây để về AUTO MODE
