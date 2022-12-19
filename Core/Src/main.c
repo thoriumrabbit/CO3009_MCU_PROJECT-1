@@ -114,9 +114,9 @@ int main(void)
   while (1)
   {
 	  trafficLight_automatic();
-	  trafficLight_manual();
 	  trafficLight_change();
-
+	  trafficLight_manual();
+	  triggerLed();
 	  //HAL_GPIO_TogglePin(D2_RED_LED1_GPIO_Port, D2_RED_LED1_Pin);
 	  //HAL_Delay(1000);
 	  //HAL_GPIO_WritePin(D6_PED_LIGHT1_GPIO_Port, D6_PED_LIGHT1_Pin, 1);
