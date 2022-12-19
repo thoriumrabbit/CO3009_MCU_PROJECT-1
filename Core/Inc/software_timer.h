@@ -8,7 +8,7 @@
 #ifndef INC_SOFTWARE_TIMER_H_
 #define INC_SOFTWARE_TIMER_H_
 
-extern int TIMER_CYCLE;
+#define  TIMER_CYCLE	10
 
 extern int trafficTimer1_flag;
 extern int trafficTimer2_flag;

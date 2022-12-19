@@ -7,7 +7,6 @@
 #include "software_timer.h"
 //#include "stm32f1xx_hal_rcc.h"
 
-int TIMER_CYCLE = 10;
 int trafficTimer1_flag;
 int trafficTimer2_flag;
 int waitTimer_flag;
