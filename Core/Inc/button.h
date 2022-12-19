@@ -20,6 +20,7 @@
 #define BTN_SET_INDEX 			2
 #define BTN_PED_INDEX			3
 int isPressedAndReleased(int buttonIndex);
+int isLongPressedAndReleased(int buttonIndex);
 void readKeyInput();
 unsigned char is_button_pressed(uint8_t index);
 unsigned char is_button_pressed_3s(unsigned char index);

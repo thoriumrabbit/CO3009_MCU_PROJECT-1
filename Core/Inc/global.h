@@ -22,6 +22,7 @@
 #define GREEN_LIGHT						3
 #define PEDESTRIAN_LIGHT_GO				4
 #define PEDESTRIAN_LIGHT_STOP			5
+#define PEDESTRIAN_LIGHT_OFF			6
 
 #define MAX_SEGMENT_VALUE				99
 #define DURATION_FOR_4HZ				250
@@ -48,6 +49,8 @@ extern int counter_green;
 extern int counter_pedestrian;
 
 
+extern int buzzer_warning;
+
 extern int isRedMode;
 extern int isYellowMode;
 extern int isGreenMode;
@@ -55,6 +58,7 @@ extern int isInManual;
 extern int isInChange;
 extern int isInAuto;
 extern int isPedestrian;
+extern int isPedestrianPressed;
 
 extern int wasInModify;
 extern int timeCounter;

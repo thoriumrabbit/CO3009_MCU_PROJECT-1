@@ -1,0 +1,3 @@
+../Core/Src/melody.c:18:6:buzzer_init	16	static
+../Core/Src/melody.c:50:6:buzzer_sound	8	static
+../Core/Src/melody.c:58:6:buzzer_run	88	static
