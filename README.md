@@ -1,4 +1,20 @@
-CÁC MODE: AUTO, MANUAL, CHANGE_VALUE, PEDESTRIAN
+# TRAFFIC LIGHT CONTROL ASSIGNMENT
+
+## Button declaration
+- A0 		A0_BTN_PED		BTN_PED_INDEX
+- A1 		A1_BTN_SELECT	BTN_SELECT_INDEX
+- A2 		A2_BTN_MODIFY	BTN_MODIFY_INDEX
+- A3 		A3_BTN_SET		BTN_SET_INDEX
+- D6 		D6_PED_LIGHT1
+- D7 		D7_PED_LIGHT2
+- D2 		D2_RED_LED1
+- D3 		D3_GREEN_LED1
+- D5 		D5_GREEN_LED2
+- D4 		D4_RED_LED_2
+
+## Mode 
+
+CÁC MODE: ** AUTO, MANUAL, CHANGE_VALUE, PEDESTRIAN ** 
 
 - Nhấn và thả SELECT (A1 -PA1) -> Mode Manual (Đợi hết đèn vàng mới được qua Manual)
 	+ Nhấn MODIFY (A2 - PA4) -> Đèn vàng -> Đổi sang đèn còn lại 

@@ -309,7 +309,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOB, D6_PED_LIGHT1_Pin|D3_GREEN_LED1_Pin|D5_GREEN_LED2_Pin|D4_RED_LED_2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, D7_PEDLIGHT2_Pin|D2_RED_LED1_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, D7_PED_LIGHT2_Pin|D2_RED_LED1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : A0_BTN_PED_Pin A1_BTN_SELECT_Pin A2_BTN_MODIFY_Pin */
   GPIO_InitStruct.Pin = A0_BTN_PED_Pin|A1_BTN_SELECT_Pin|A2_BTN_MODIFY_Pin;
@@ -330,8 +330,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : D7_PEDLIGHT2_Pin D2_RED_LED1_Pin */
-  GPIO_InitStruct.Pin = D7_PEDLIGHT2_Pin|D2_RED_LED1_Pin;
+  /*Configure GPIO pins : D7_PED_LIGHT2_Pin D2_RED_LED1_Pin */
+  GPIO_InitStruct.Pin = D7_PED_LIGHT2_Pin|D2_RED_LED1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
