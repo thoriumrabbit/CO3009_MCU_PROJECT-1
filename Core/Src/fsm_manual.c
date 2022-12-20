@@ -32,7 +32,7 @@ void trafficLight_manual(){
 		if(isPressedAndReleased(BTN_SET_INDEX)){
 			isInAuto = 1;
 		}
-		if(trafficTimer1_flag == 1){
+		if(trafficTimer1_flag == 1 && isInAuto == 0){
 			state = MANUAL_GREEN1_RED2;
 		}
 		else if (trafficTimer1_flag == 1 && isInAuto == 1){
@@ -56,8 +56,11 @@ void trafficLight_manual(){
 		}
 		break;
 	case MANUAL_YELLOW1_RED2:
+		if(isPressedAndReleased(BTN_SET_INDEX)){
+			isInAuto = 1;
+		}
 		displayTrafficLight(YELLOW_LIGHT, RED_LIGHT);
-		if(trafficTimer1_flag == 1){
+		if(trafficTimer1_flag == 1 && isInAuto == 0){
 			state = MANUAL_RED1_GREEN2;
 		}
 		else if (trafficTimer1_flag == 1 && isInAuto == 1){
