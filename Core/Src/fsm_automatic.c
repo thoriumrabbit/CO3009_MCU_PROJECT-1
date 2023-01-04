@@ -15,6 +15,9 @@
 #include "led_segment_control.h"
 #include "melody.h"
 #include "main.h"
+#include <stdio.h>
+
+char message[MAX_MESSAGE_LENGTH];
 
 void trafficLight_automatic() {
 	switch (state) {
@@ -25,6 +28,7 @@ void trafficLight_automatic() {
 		segment2Counter = counter_green / DIVISION_NUMBER;
 		setTimerCounter1(DURATION_1S);
 		counter_pedestrian = 0;
+		HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!AUTOMATIC#\r"), 1000);
 		break;
 	case AUTO_RED1_GREEN2:
 		displayTrafficLight(RED_LIGHT, GREEN_LIGHT);
@@ -34,8 +38,10 @@ void trafficLight_automatic() {
 			displayPedestrianLight(PEDESTRIAN_LIGHT_OFF);
 		if (isInManual == 1) {
 			state = MANUAL_RED1_GREEN2;
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!MANUAL#\r"), 1000);
 		}
 		if (isPressedAndReleased(BTN_SELECT_INDEX)) {
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!MANUAL#\r"), 1000);
 			state = MANUAL_RED1_GREEN2;
 			isInManual = 1;
 			isInAuto = 0;
@@ -52,9 +58,11 @@ void trafficLight_automatic() {
 
 
 		if (countDownTimer1_counter == 1) {
+			int buffer1 = segment1Counter/10;
+			int buffer2 = segment1Counter%10;
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#\r", buffer1, buffer2), 1000);
 			segment1Counter--;
 			segment2Counter--;
-
 			if (segment2Counter == 0) {
 				segment2Counter = counter_yellow / DIVISION_NUMBER;
 				state = AUTO_RED1_YELLOW2;
@@ -93,6 +101,9 @@ void trafficLight_automatic() {
 			setTimerTriggerLed(DURATION_FOR_4HZ);
 		}
 		if (countDownTimer1_counter == 1) {
+			int buffer1 = segment1Counter/10;
+			int buffer2 = segment1Counter%10;
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#\r", buffer1, buffer2), 1000);
 			segment1Counter--;
 			segment2Counter--;
 			if (segment2Counter <= 0) {
@@ -120,9 +131,11 @@ void trafficLight_automatic() {
 			displayPedestrianLight(PEDESTRIAN_LIGHT_OFF);
 		if (isInManual == 1) {
 			state = MANUAL_GREEN1_RED2;
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!MANUAL#\r"), 1000);
 		}
 		if (isPressedAndReleased(BTN_SELECT_INDEX)) {
 			state = MANUAL_GREEN1_RED2;
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!MANUAL#\r"), 1000);
 			isInManual = 1;
 			isInAuto = 0;
 		}
@@ -137,6 +150,9 @@ void trafficLight_automatic() {
 			isPedestrian = 1;
 		}
 		if (countDownTimer1_counter == 1) {
+			int buffer1 = segment1Counter/10;
+			int buffer2 = segment1Counter%10;
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#\r", buffer1, buffer2), 1000);
 			segment1Counter--;
 			segment2Counter--;
 			if (segment1Counter <= 0) {
@@ -181,6 +197,9 @@ void trafficLight_automatic() {
 		}
 
 		if (countDownTimer1_counter == 1) {
+			int buffer1 = segment1Counter/10;
+			int buffer2 = segment1Counter%10;
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#\r", buffer1, buffer2), 1000);
 			segment1Counter--;
 			segment2Counter--;
 			if (segment1Counter <= 0) {
@@ -196,9 +215,7 @@ void trafficLight_automatic() {
 						isPedestrian = 0;
 					}
 				}
-
 			}
-
 			setTimerCounter1(DURATION_1S);
 		}
 

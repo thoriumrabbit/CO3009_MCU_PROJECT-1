@@ -13,7 +13,9 @@
 #include "button.h"
 #include "software_timer.h"
 #include "led_segment_control.h"
+#include <stdio.h>"
 
+char message[MAX_MESSAGE_LENGTH];
 void trafficLight_change(){
 	switch(state){
 	case CHANGE_MODE:
@@ -24,6 +26,8 @@ void trafficLight_change(){
 			state = CHANGE_MODE_RED;
 			tempCounter = counter_red / DIVISION_NUMBER;
 		}
+
+		HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!CHANGE#\r"), 1000);
 		break;
 	case CHANGE_MODE_RED:
 		isRedMode = 1;
@@ -108,6 +112,9 @@ void trafficLight_change(){
 	case MODIFY_PRESSED:
 		if(isRedMode == 1){
 			tempCounter += 1;
+			int buffer1 = tempCounter/10;
+			int buffer2 = tempCounter%10;
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!RED:%d%d#\r", buffer1, buffer2), 1000);
 			if(tempCounter > MAX_SEGMENT_VALUE){
 				tempCounter =0;
 			}
@@ -115,6 +122,9 @@ void trafficLight_change(){
 		}
 		else if(isYellowMode == 1){
 			tempCounter += 1;
+			int buffer1 = tempCounter/10;
+			int buffer2 = tempCounter%10;
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!YEL:%d%d#\r", buffer1, buffer2), 1000);
 			if(tempCounter > MAX_SEGMENT_VALUE){
 				tempCounter =0;
 			}
@@ -122,6 +132,9 @@ void trafficLight_change(){
 		}
 		else if(isGreenMode == 1){
 			tempCounter += 1;
+			int buffer1 = tempCounter/10;
+			int buffer2 = tempCounter%10;
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!GRE:%d%d#\r", buffer1, buffer2), 1000);
 			if(tempCounter > MAX_SEGMENT_VALUE){
 				tempCounter = 0;
 			}
@@ -167,6 +180,7 @@ void trafficLight_change(){
 			state = CHANGE_MODE_RED;
 		}
 		if(waitTimer_flag == 1){
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!SET#\r"), 1000);
 			state = IDLE;
 		}
 		break;
