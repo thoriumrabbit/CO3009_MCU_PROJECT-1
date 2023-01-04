@@ -13,7 +13,7 @@
 #include "button.h"
 #include "software_timer.h"
 #include "led_segment_control.h"
-#include <stdio.h>"
+#include <stdio.h>
 
 char message[MAX_MESSAGE_LENGTH];
 void trafficLight_change(){
