@@ -21,10 +21,10 @@ CÁC MODE: ** AUTO, MANUAL, CHANGE_VALUE, PEDESTRIAN **
 		VD: Đang ở Xanh -> Modify -> Vàng -> Đỏ
 	+ Nhấn SET (A3 - PB0) -> Đợi đèn vàng -> AUTO
 	
-- Nhấn giữ 3 giây SELECT -> MODE MODIFY TIME
+- Nhấn đúp SELECT -> MODE MODIFY TIME
 	+ Nhấn SELECT -> Đổi đèn
 	+ Nhấn MODIFY -> +1 value của đèn đó
-	+ LONG_PRESSED_MODIFY + 10 value của đèn đó
+	+ DOUBLE_PRESSED_MODIFY + 10 value của đèn đó
 	+ Nhấn SET_INDEX thì mới áp dụng giá trị mới của đèn
 		* Sau khi nhấn SET thì đợi ... giây để về AUTO MODE
 		* Trong thời gian đợi có thể nhấn SELECT để tiếp tục chỉnh thời gian
