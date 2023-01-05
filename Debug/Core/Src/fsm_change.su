@@ -1,2 +1,2 @@
-fsm_change.c:19:6:trafficLight_change	32	static
-fsm_change.c:192:6:triggerLed	8	static
+fsm_change.c:19:6:trafficLight_change	136	static
+fsm_change.c:290:6:triggerLed	8	static

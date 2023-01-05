@@ -85,6 +85,10 @@ void trafficLight_change(){
 				if(tempCounter > MAX_SEGMENT_VALUE) {
 					tempCounter = 0;
 				}
+				if((tempCounter + counter_green/DIVISION_NUMBER) > MAX_SEGMENT_VALUE){
+					HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:RED_SYNC_OVERFLOW\r\n"), 1000);
+					tempCounter = 0;
+				}
 				setTimerModify(DURATION_1S);
 			}
 		}
@@ -116,6 +120,10 @@ void trafficLight_change(){
 				if(tempCounter > MAX_SEGMENT_VALUE) {
 					tempCounter = 0;
 				}
+				if((tempCounter + counter_yellow/DIVISION_NUMBER) > MAX_SEGMENT_VALUE){
+					HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:RED_SYNC_OVERFLOW\r\n"), 1000);
+					tempCounter = 0;
+				}
 				setTimerModify(DURATION_1S);
 			}
 		}
@@ -132,7 +140,7 @@ void trafficLight_change(){
 			int buffer2 = tempCounter%10;
 			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#RED\r\n", buffer1, buffer2), 1000);
 			if(tempCounter > MAX_SEGMENT_VALUE){
-				tempCounter =0;
+				tempCounter = 0;
 			}
 			state = CHANGE_MODE_RED;
 		}
@@ -144,6 +152,10 @@ void trafficLight_change(){
 			if(tempCounter > MAX_SEGMENT_VALUE){
 				tempCounter =0;
 			}
+			if((tempCounter + counter_green/DIVISION_NUMBER) > MAX_SEGMENT_VALUE){
+				HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:RED_SYNC_OVERFLOW\r\n"), 1000);
+				tempCounter = 0;
+			}
 			state = CHANGE_MODE_YELLOW;
 		}
 		else if(isGreenMode == 1){
@@ -152,6 +164,10 @@ void trafficLight_change(){
 			int buffer2 = tempCounter%10;
 			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#GRE\r\n", buffer1, buffer2), 1000);
 			if(tempCounter > MAX_SEGMENT_VALUE){
+				tempCounter = 0;
+			}
+			if((tempCounter + counter_yellow/DIVISION_NUMBER) > MAX_SEGMENT_VALUE){
+				HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:RED_SYNC_OVERFLOW\r\n"), 1000);
 				tempCounter = 0;
 			}
 			state = CHANGE_MODE_GREEN;
@@ -165,6 +181,20 @@ void trafficLight_change(){
 		}
 		if(modifyTimer_flag == 1){
 			tempCounter += 10;
+			if (isYellowMode == 1){
+				if((tempCounter + counter_green/DIVISION_NUMBER) > MAX_SEGMENT_VALUE){
+					HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:RED_SYNC_OVERFLOW\r\n"), 1000);
+					tempCounter = 0;
+				}
+			}
+
+			else if (isGreenMode == 1){
+				if((tempCounter + counter_yellow/DIVISION_NUMBER) > MAX_SEGMENT_VALUE){
+					HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:RED_SYNC_OVERFLOW\r\n"), 1000);
+					tempCounter = 0;
+				}
+			}
+
 			int buffer1 = tempCounter/10;
 			int buffer2 = tempCounter%10;
 			if(isRedMode == 1)
@@ -187,9 +217,51 @@ void trafficLight_change(){
 
 		break;
 	case SET_PRESSED:
-		if(isRedMode == 1) counter_red = tempCounter * DIVISION_NUMBER;
-		else if (isYellowMode == 1) counter_yellow = tempCounter * DIVISION_NUMBER;
-		else if (isGreenMode == 1) counter_green = tempCounter * DIVISION_NUMBER;
+		if(isRedMode == 1){
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:SYNC\r\n"), 1000);
+			counter_red = tempCounter * DIVISION_NUMBER;
+			counter_green = counter_red - counter_yellow;
+
+			int bufferRed_1 = (counter_red/DIVISION_NUMBER) / 10;
+			int bufferRed_2 = (counter_red/DIVISION_NUMBER) % 10;
+			int bufferYel_1 = (counter_yellow/DIVISION_NUMBER) / 10;
+			int bufferYel_2 = (counter_yellow/DIVISION_NUMBER) % 10;
+			int bufferGre_1 = (counter_green/DIVISION_NUMBER) / 10;
+			int bufferGre_2 = (counter_green/DIVISION_NUMBER) % 10;
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#NEWRED\r\n", bufferRed_1, bufferRed_2), 1000);
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#NEWYEL\r\n", bufferYel_1, bufferYel_2), 1000);
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#NEWYEL\r\n", bufferGre_1, bufferGre_2), 1000);
+		}
+		else if (isYellowMode == 1) {
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:SYNC\r\n"), 1000);
+			counter_yellow = tempCounter * DIVISION_NUMBER;
+			counter_red = counter_yellow + counter_green;
+
+			int bufferRed_1 = (counter_red/DIVISION_NUMBER) / 10;
+			int bufferRed_2 = (counter_red/DIVISION_NUMBER) % 10;
+			int bufferYel_1 = (counter_yellow/DIVISION_NUMBER) / 10;
+			int bufferYel_2 = (counter_yellow/DIVISION_NUMBER) % 10;
+			int bufferGre_1 = (counter_green/DIVISION_NUMBER) / 10;
+			int bufferGre_2 = (counter_green/DIVISION_NUMBER) % 10;
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#NEWRED\r\n", bufferRed_1, bufferRed_2), 1000);
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#NEWYEL\r\n", bufferYel_1, bufferYel_2), 1000);
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#NEWYEL\r\n", bufferGre_1, bufferGre_2), 1000);
+		}
+		else if (isGreenMode == 1) {
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:SYNC\r\n"), 1000);
+			counter_green = tempCounter * DIVISION_NUMBER;
+			counter_red = counter_yellow + counter_green;
+
+			int bufferRed_1 = (counter_red/DIVISION_NUMBER) / 10;
+			int bufferRed_2 = (counter_red/DIVISION_NUMBER) % 10;
+			int bufferYel_1 = (counter_yellow/DIVISION_NUMBER) / 10;
+			int bufferYel_2 = (counter_yellow/DIVISION_NUMBER) % 10;
+			int bufferGre_1 = (counter_green/DIVISION_NUMBER) / 10;
+			int bufferGre_2 = (counter_green/DIVISION_NUMBER) % 10;
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#NEWRED\r\n", bufferRed_1, bufferRed_2), 1000);
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#NEWYEL\r\n", bufferYel_1, bufferYel_2), 1000);
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#NEWYEL\r\n", bufferGre_1, bufferGre_2), 1000);
+		}
 		isRedMode = 0;
 		isYellowMode = 0;
 		isGreenMode = 0;
