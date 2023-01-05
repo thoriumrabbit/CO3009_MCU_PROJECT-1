@@ -12,6 +12,7 @@
 #include "button.h"
 #include "software_timer.h"
 #include "led_segment_control.h"
+#include <stdio.h>
 
 void trafficLight_manual(){
 	switch(state){
