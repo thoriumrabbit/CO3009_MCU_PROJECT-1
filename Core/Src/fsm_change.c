@@ -49,7 +49,7 @@ void trafficLight_change(){
 				tempCounter += 10;
 				int buffer1 = tempCounter/10;
 				int buffer2 = tempCounter%10;
-				HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!RED:%d%d#\r\n", buffer1, buffer2), 1000);
+				HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#RED\r\n", buffer1, buffer2), 1000);
 				if(tempCounter > MAX_SEGMENT_VALUE) {
 					tempCounter = 0;
 				}
@@ -58,7 +58,7 @@ void trafficLight_change(){
 		}
 		if(isPressedAndReleased(BTN_SET_INDEX)){
 			state = SET_PRESSED;
-			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!RED:SET#\r\n"), 1000);
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:SET#RED\r\n"), 1000);
 			setTimerWait(DURATION_3S);
 		}
 		break;
@@ -81,7 +81,7 @@ void trafficLight_change(){
 				tempCounter += 10;
 				int buffer1 = tempCounter/10;
 				int buffer2 = tempCounter%10;
-				HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!YEL:%d%d#\r\n", buffer1, buffer2), 1000);
+				HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#YEL\r\n", buffer1, buffer2), 1000);
 				if(tempCounter > MAX_SEGMENT_VALUE) {
 					tempCounter = 0;
 				}
@@ -90,7 +90,7 @@ void trafficLight_change(){
 		}
 		if(isPressedAndReleased(BTN_SET_INDEX)){
 			state = SET_PRESSED;
-			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!YEL:SET#\r\n"), 1000);
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:SET#YEL\r\n"), 1000);
 			setTimerWait(DURATION_3S);
 		}
 		break;
@@ -112,7 +112,7 @@ void trafficLight_change(){
 				tempCounter += 10;
 				int buffer1 = tempCounter/10;
 				int buffer2 = tempCounter%10;
-				HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!GRE:%d%d#\r\n", buffer1, buffer2), 1000);
+				HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#GRE\r\n", buffer1, buffer2), 1000);
 				if(tempCounter > MAX_SEGMENT_VALUE) {
 					tempCounter = 0;
 				}
@@ -121,7 +121,7 @@ void trafficLight_change(){
 		}
 		if(isPressedAndReleased(BTN_SET_INDEX)){
 			state = SET_PRESSED;
-			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!GRE:SET#\r\n"), 1000);
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:SET#GRE\r\n"), 1000);
 			setTimerWait(DURATION_3S);
 		}
 		break;
@@ -130,7 +130,7 @@ void trafficLight_change(){
 			tempCounter += 1;
 			int buffer1 = tempCounter/10;
 			int buffer2 = tempCounter%10;
-			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!RED:%d%d#\r\n", buffer1, buffer2), 1000);
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#RED\r\n", buffer1, buffer2), 1000);
 			if(tempCounter > MAX_SEGMENT_VALUE){
 				tempCounter =0;
 			}
@@ -140,7 +140,7 @@ void trafficLight_change(){
 			tempCounter += 1;
 			int buffer1 = tempCounter/10;
 			int buffer2 = tempCounter%10;
-			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!YEL:%d%d#\r\n", buffer1, buffer2), 1000);
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#YEL\r\n", buffer1, buffer2), 1000);
 			if(tempCounter > MAX_SEGMENT_VALUE){
 				tempCounter =0;
 			}
@@ -150,7 +150,7 @@ void trafficLight_change(){
 			tempCounter += 1;
 			int buffer1 = tempCounter/10;
 			int buffer2 = tempCounter%10;
-			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!GRE:%d%d#\r\n", buffer1, buffer2), 1000);
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#GRE\r\n", buffer1, buffer2), 1000);
 			if(tempCounter > MAX_SEGMENT_VALUE){
 				tempCounter = 0;
 			}
@@ -168,11 +168,11 @@ void trafficLight_change(){
 			int buffer1 = tempCounter/10;
 			int buffer2 = tempCounter%10;
 			if(isRedMode == 1)
-				HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!RED:%d%d#\r\n", buffer1, buffer2), 1000);
+				HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#RED\r\n", buffer1, buffer2), 1000);
 			else if(isYellowMode == 1)
-				HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!YEL:%d%d#\r\n", buffer1, buffer2), 1000);
+				HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#YEL\r\n", buffer1, buffer2), 1000);
 			else if(isGreenMode == 1)
-				HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!GRE:%d%d#\r\n", buffer1, buffer2), 1000);
+				HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#GRE\r\n", buffer1, buffer2), 1000);
 
 			if(tempCounter > MAX_SEGMENT_VALUE) {
 				tempCounter = 0;

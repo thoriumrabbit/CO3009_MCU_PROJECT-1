@@ -23,6 +23,7 @@ void trafficLight_manual(){
 		}
 		if(isPressedAndReleased(BTN_SET_INDEX)){
 			isInAuto = 1;
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!AUTOMATIC#\r\n"), 1000);
 			state = MANUAL_RED1_YELLOW2;
 			setTimerTraffic1(counter_yellow);
 		}
@@ -35,6 +36,7 @@ void trafficLight_manual(){
 	case MANUAL_RED1_YELLOW2:
 		displayTrafficLight(RED_LIGHT, YELLOW_LIGHT);
 		if(isPressedAndReleased(BTN_SET_INDEX)){
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!AUTOMATIC#\r\n"), 1000);
 			isInAuto = 1;
 		}
 		if(trafficTimer1_flag == 1 && isInAuto == 0){
@@ -57,6 +59,7 @@ void trafficLight_manual(){
 		displayTrafficLight(GREEN_LIGHT, RED_LIGHT);
 		if(isPressedAndReleased(BTN_SET_INDEX)){
 			isInAuto = 1;
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!AUTOMATIC#\r\n"), 1000);
 			state = MANUAL_YELLOW1_RED2;
 			setTimerTraffic1(counter_yellow);
 		}
@@ -72,6 +75,7 @@ void trafficLight_manual(){
 		break;
 	case MANUAL_YELLOW1_RED2:
 		if(isPressedAndReleased(BTN_SET_INDEX)){
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!AUTOMATIC#\r\n"), 1000);
 			isInAuto = 1;
 		}
 		displayTrafficLight(YELLOW_LIGHT, RED_LIGHT);
