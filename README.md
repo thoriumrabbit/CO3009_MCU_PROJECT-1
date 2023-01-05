@@ -25,7 +25,7 @@ CÁC MODE: ** AUTO, MANUAL, CHANGE_VALUE, PEDESTRIAN **
 	+ Nhấn SELECT -> Đổi đèn
 	+ Nhấn MODIFY -> +1 value của đèn đó
 	+ DOUBLE_PRESSED_MODIFY + 10 value của đèn đó
-	+ Nhấn SET_INDEX thì mới áp dụng giá trị mới của đèn
+	+ Nhấn SET thì mới áp dụng giá trị mới của đèn
 		* Sau khi nhấn SET thì đợi ... giây để về AUTO MODE
 		* Trong thời gian đợi có thể nhấn SELECT để tiếp tục chỉnh thời gian
 
