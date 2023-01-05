@@ -33,3 +33,5 @@ int segment2Counter;
 
 int segmentIndexAuto;
 int segmentIndexManual;
+
+char message[MAX_MESSAGE_LENGTH];

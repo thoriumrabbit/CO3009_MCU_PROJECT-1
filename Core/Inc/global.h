@@ -75,6 +75,8 @@ extern int segmentIndexManual;
 extern int led_buffer_auto[MAX_LED_SEGMENT];
 extern int led_buffer_manual[MAX_LED_SEGMENT];
 
+extern char message[MAX_MESSAGE_LENGTH];
+
 extern UART_HandleTypeDef huart2;
 
 #endif /* INC_GLOBAL_H_ */

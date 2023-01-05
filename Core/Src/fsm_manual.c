@@ -26,6 +26,11 @@ void trafficLight_manual(){
 			state = MANUAL_RED1_YELLOW2;
 			setTimerTraffic1(counter_yellow);
 		}
+		//------
+		if (isLongPressedAndReleased(BTN_SELECT_INDEX)) {
+			state = CHANGE_MODE;
+		}
+		//------
 		break;
 	case MANUAL_RED1_YELLOW2:
 		displayTrafficLight(RED_LIGHT, YELLOW_LIGHT);
@@ -42,6 +47,11 @@ void trafficLight_manual(){
 			state = AUTO_GREEN1_RED2;
 			setTimerCounter1(DURATION_1S);
 		}
+		//------
+		if (isLongPressedAndReleased(BTN_SELECT_INDEX)) {
+			state = CHANGE_MODE;
+		}
+		//------
 		break;
 	case MANUAL_GREEN1_RED2:
 		displayTrafficLight(GREEN_LIGHT, RED_LIGHT);
@@ -54,6 +64,11 @@ void trafficLight_manual(){
 			state = MANUAL_YELLOW1_RED2;
 			setTimerTraffic1(counter_yellow);
 		}
+		//------
+		if (isLongPressedAndReleased(BTN_SELECT_INDEX)) {
+			state = CHANGE_MODE;
+		}
+		//------
 		break;
 	case MANUAL_YELLOW1_RED2:
 		if(isPressedAndReleased(BTN_SET_INDEX)){
@@ -70,6 +85,11 @@ void trafficLight_manual(){
 			state = AUTO_RED1_GREEN2;
 			setTimerCounter1(DURATION_1S);
 		}
+		//------
+		if (isLongPressedAndReleased(BTN_SELECT_INDEX)) {
+			state = CHANGE_MODE;
+		}
+		//------
 		break;
 	default:
 		break;

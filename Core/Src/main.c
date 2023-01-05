@@ -117,6 +117,10 @@ int main(void)
 	  trafficLight_change();
 	  trafficLight_manual();
 	  triggerLed();
+//	  if (isLongPressedAndReleased(BTN_SELECT_INDEX)){
+//		  char message[20];
+//		  HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!longpress#\r\n"), 1000);
+//	  }
 	  //HAL_GPIO_TogglePin(D2_RED_LED1_GPIO_Port, D2_RED_LED1_Pin);
 	  //HAL_Delay(1000);
 	  //HAL_GPIO_WritePin(D6_PED_LIGHT1_GPIO_Port, D6_PED_LIGHT1_Pin, 1);
