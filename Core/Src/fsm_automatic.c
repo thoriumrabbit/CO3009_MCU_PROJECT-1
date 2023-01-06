@@ -17,7 +17,6 @@
 #include "main.h"
 #include <stdio.h>
 
-char message[MAX_MESSAGE_LENGTH];
 
 void trafficLight_automatic() {
 	switch (state) {

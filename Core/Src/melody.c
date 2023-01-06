@@ -20,7 +20,7 @@ void buzzer_init(TIM_TypeDef *tim){
 	setTimerBuzzer(10);
 }
 int butterfly[72] = {
-		NOTE_C6, NOTE_C6, NOTE_D6,NOTE_D6, NOTE_E6 ,NOTE_E6, NOTE_C6, NOTE_C6,
+		NOTE_C6, NOTE_G5, NOTE_A5,NOTE_E5, NOTE_C6 ,NOTE_D6, NOTE_E6, NOTE_C6,
 		NOTE_C6,NOTE_C6, NOTE_D6,NOTE_D6, NOTE_E6 ,NOTE_E6, NOTE_C6, 0,
 		NOTE_E6, NOTE_E6, NOTE_F6, NOTE_F6, NOTE_G6,  NOTE_G6, NOTE_G6, NOTE_G6,
 		NOTE_E6, NOTE_E6, NOTE_F6, NOTE_F6, NOTE_G6,  NOTE_G6, NOTE_G6, NOTE_G6,
@@ -46,12 +46,19 @@ int dio[72] = {
 		NOTE_CS6,NOTE_D6,0, NOTE_G5, //4
 		NOTE_FS5, NOTE_F5, NOTE_D6 , NOTE_AS5, NOTE_B5, NOTE_B5//6
 };
-
+uint8_t swap = 0;
 void buzzer_sound(TIM_HandleTypeDef htim ,int volume){
 		TIM_CCxChannelCmd(TIM3, TIM_CHANNEL_1, TIM_CCx_ENABLE);
-		__HAL_TIM_SET_COMPARE(&htim,TIM_CHANNEL_1,volume + 30*idx);
-		TIM3->PSC = 64000/dio[2*idx%72];// melody[i%3];
-		//TIM3->PSC = (TIM3->PSC + 1)%63 + 20;// melody[i%3];
+		__HAL_TIM_SET_COMPARE(&htim,TIM_CHANNEL_1,volume + 20*idx);
+		if (swap == 0){
+			TIM3->PSC = 64000/butterfly[idx%72];// melody[i%3];
+			if(idx == 7) swap = 1;
+		}
+		else if (swap == 1){
+			TIM3->PSC = (TIM3->PSC + 1)%63 + 20;// melody[i%3];s
+			if(idx == 7) swap = 0;
+		}
+		//
 		idx++;
 }
 
@@ -63,6 +70,6 @@ void buzzer_run(){
 			idx = 0;
 			TIM3->PSC = scale;
 		}
-		setTimerBuzzer(170);
+		setTimerBuzzer(130);
 	}
 }
