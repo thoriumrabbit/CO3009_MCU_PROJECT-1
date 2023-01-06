@@ -27,6 +27,9 @@ void trafficLight_change(){
 		state = CHANGE_MODE_RED;
 		tempCounter = counter_red / DIVISION_NUMBER;
 		HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!CHANGE#\r\n"), 1000);
+		int buffer1 = tempCounter/10;
+		int buffer2 = tempCounter%10;
+		HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#RED\r\n", buffer1, buffer2), 1000);
 		clearTrafficDisplay();
 		setTimerTriggerLed(DURATION_FOR_4HZ);
 		//------
@@ -38,6 +41,9 @@ void trafficLight_change(){
 		if(isPressedAndReleased(BTN_SELECT_INDEX)){
 			tempCounter = counter_yellow/DIVISION_NUMBER;
 			clearTrafficDisplay();
+			int buffer1 = tempCounter/10;
+			int buffer2 = tempCounter%10;
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#YEL\r\n", buffer1, buffer2), 1000);
 			state = CHANGE_MODE_YELLOW;
 		}
 		if(isPressedAndReleased(BTN_MODIFY_INDEX)){
@@ -70,6 +76,9 @@ void trafficLight_change(){
 		if(isPressedAndReleased(BTN_SELECT_INDEX)){
 			tempCounter = counter_green/DIVISION_NUMBER;
 			clearTrafficDisplay();
+			int buffer1 = tempCounter/10;
+			int buffer2 = tempCounter%10;
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#GRE\r\n", buffer1, buffer2), 1000);
 			state = CHANGE_MODE_GREEN;
 		}
 		if(isPressedAndReleased(BTN_MODIFY_INDEX)){
@@ -105,6 +114,9 @@ void trafficLight_change(){
 
 		if(isPressedAndReleased(BTN_SELECT_INDEX)){
 			tempCounter = counter_red/DIVISION_NUMBER;
+			int buffer1 = tempCounter/10;
+			int buffer2 = tempCounter%10;
+			HAL_UART_Transmit(&huart2, (void *)message, sprintf(message, "!7SEG:%d%d#RED\r\n", buffer1, buffer2), 1000);
 			state = CHANGE_MODE_RED;
 		}
 		if(isPressedAndReleased(BTN_MODIFY_INDEX)){

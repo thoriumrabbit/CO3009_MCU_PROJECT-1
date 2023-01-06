@@ -49,9 +49,9 @@ int dio[72] = {
 
 void buzzer_sound(TIM_HandleTypeDef htim ,int volume){
 		TIM_CCxChannelCmd(TIM3, TIM_CHANNEL_1, TIM_CCx_ENABLE);
-		__HAL_TIM_SET_COMPARE(&htim,TIM_CHANNEL_1,volume + 20*idx);
-		// TIM3->PSC = 64000/dio[i%72];// melody[i%3];
-		TIM3->PSC = (TIM3->PSC + 1)%63 + 20;// melody[i%3];
+		__HAL_TIM_SET_COMPARE(&htim,TIM_CHANNEL_1,volume + 30*idx);
+		TIM3->PSC = 64000/dio[2*idx%72];// melody[i%3];
+		//TIM3->PSC = (TIM3->PSC + 1)%63 + 20;// melody[i%3];
 		idx++;
 }
 
