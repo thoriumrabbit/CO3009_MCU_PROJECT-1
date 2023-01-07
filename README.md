@@ -1,4 +1,5 @@
 # TRAFFIC LIGHT CONTROL ASSIGNMENT
+# Microcontroller - Microprocessor ASSIGNMENT
 
 ## Button declaration
 - A0 		A0_BTN_PED		BTN_PED_INDEX
