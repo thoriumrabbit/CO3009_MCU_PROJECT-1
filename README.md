@@ -1,6 +1,7 @@
 # TRAFFIC LIGHT CONTROL ASSIGNMENT
 # Microcontroller - Microprocessor ASSIGNMENT
 
+Contribute by me, Phan Minh Toàn and Lê Tử Quân
 ## Button declaration
 - A0 		A0_BTN_PED		BTN_PED_INDEX
 - A1 		A1_BTN_SELECT	BTN_SELECT_INDEX
